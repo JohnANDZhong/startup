@@ -10,7 +10,12 @@
  */
 #include <stdio.h>
 #include "sys_common.h"
+#include "sys_time.h"
 #include "sys_logger.h"
+
+extern INT32 app_component_init(VOID);
+
+extern INT32 app_component_start(VOID);
 
 /**
  * @brief main
@@ -22,14 +27,14 @@
 INT32 main(int argc, char *argv[])
 {
     /* code */
+
+    app_component_init();
+
+    app_component_start();
+
     while (1)
     {
-        LOG_MESSAGE(LOG_INFO, "time sleep");
-        LOG_MESSAGE(LOG_ERROR, "time LOG_ERROR");
-        LOG_MESSAGE(LOG_DEBUG, "time LOG_DEBUG");
-        LOG_MESSAGE(LOG_WARNING, "time LOG_WARNING");
-        LOG_MESSAGE(LOG_ERROR, "time LOG_ERROR");
-        sleep(1);
+       usleep(40 * 1000);
     }
     
     return 0;
